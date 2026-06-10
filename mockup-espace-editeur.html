@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr" data-fr-scheme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace éditeur · Promucad · API Particulier (mockup)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr/dist/dsfr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr/dist/utility/utility.min.css">
+  <style>
+    .fr-table table { width: 100%; }
+  </style>
+</head>
+<body>
+  <header role="banner" class="fr-header">
+    <div class="fr-header__body">
+      <div class="fr-container">
+        <div class="fr-header__body-row">
+          <div class="fr-header__brand fr-enlarge-link">
+            <div class="fr-header__brand-top">
+              <div class="fr-header__logo">
+                <p class="fr-logo">République<br>Française</p>
+              </div>
+              <div class="fr-header__navbar">
+                <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-header-menu" aria-haspopup="menu" id="button-menu" title="Menu">
+                  Menu
+                </button>
+              </div>
+            </div>
+            <div class="fr-header__service">
+              <a href="#" title="Accueil de l'espace éditeur">
+                <p class="fr-header__service-title">Espace éditeur · API Particulier</p>
+              </a>
+              <p class="fr-header__service-tagline">pour le compte de <strong>Promucad</strong></p>
+            </div>
+          </div>
+          <div class="fr-header__tools">
+            <div class="fr-header__tools-links">
+              <ul class="fr-btns-group">
+                <li>
+                  <a class="fr-btn fr-icon-user-line" href="#">Camille Moreau</a>
+                </li>
+                <li>
+                  <a class="fr-btn fr-icon-logout-box-r-line" href="#">Se déconnecter</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fr-header__menu fr-modal" id="modal-header-menu" aria-labelledby="button-menu">
+      <div class="fr-container">
+        <button class="fr-btn--close fr-btn" aria-controls="modal-header-menu" title="Fermer">
+          Fermer
+        </button>
+        <div class="fr-header__menu-links"></div>
+        <nav class="fr-nav" role="navigation" aria-label="Sections de l'espace éditeur">
+          <ul class="fr-nav__list">
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-profil" data-section="section-profil" target="_self" aria-current="page">Profil</a>
+            </li>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-securite" data-section="section-securite" target="_self">Sécurité</a>
+            </li>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-habilitations" data-section="section-habilitations" target="_self">Habilitations</a>
+            </li>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-jetons" data-section="section-jetons" target="_self">Jetons éditeurs</a>
+            </li>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-logs" data-section="section-logs" target="_self">Logs d'accès</a>
+            </li>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link" href="#section-membres" data-section="section-membres" target="_self">Membres</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="fr-container fr-mt-5w fr-mb-7w">
+
+    <!-- ====================== PROFIL ====================== -->
+    <section id="section-profil" class="editor-section">
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Profil</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Informations générales de votre organisation, visibles ou utilisées par nos services.
+        </p>
+      </div>
+
+      <form>
+        <h2 class="fr-h4 fr-mt-2w">Informations générales</h2>
+        <div class="fr-grid-row fr-grid-row--gutters">
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-name">
+                Nom
+                <span class="fr-hint-text">Raison sociale ou nom commercial</span>
+              </label>
+              <input class="fr-input" type="text" id="editor-name" name="editor-name" value="Promucad">
+            </div>
+          </div>
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-siret">
+                SIRET
+                <span class="fr-hint-text">14 chiffres</span>
+              </label>
+              <input class="fr-input" type="text" id="editor-siret" name="editor-siret" maxlength="14" value="91952090800014">
+            </div>
+          </div>
+        </div>
+
+        <div class="fr-input-group">
+          <label class="fr-label" for="editor-description">
+            Description
+            <span class="fr-hint-text">Visible par les usagers (collectivités, CCAS)</span>
+          </label>
+          <textarea class="fr-input" id="editor-description" name="editor-description" rows="3">Éditeur de la solution Promucad pour la gestion de la petite enfance et de la restauration scolaire des collectivités.</textarea>
+        </div>
+
+        <div class="fr-grid-row fr-grid-row--gutters">
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-select-group">
+              <label class="fr-label" for="editor-deployment">Type de déploiement</label>
+              <select class="fr-select" id="editor-deployment" name="editor-deployment">
+                <option value="saas" selected>SaaS centralisé</option>
+                <option value="on_premise">On-premise (installé chez le client)</option>
+                <option value="hybrid">Mixte / hybride</option>
+              </select>
+            </div>
+          </div>
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-languages">
+                Langages utilisés
+                <span class="fr-hint-text">Pour adapter notre documentation technique</span>
+              </label>
+              <input class="fr-input" type="text" id="editor-languages" name="editor-languages" value="Python, TypeScript">
+            </div>
+          </div>
+        </div>
+
+        <h2 class="fr-h4 fr-mt-4w">Contact</h2>
+        <div class="fr-grid-row fr-grid-row--gutters">
+          <div class="fr-col-12 fr-col-md-4">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-email">Email</label>
+              <input class="fr-input" type="email" id="editor-email" name="editor-email" value="contact@promucad.fr">
+            </div>
+          </div>
+          <div class="fr-col-12 fr-col-md-4">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-phone">Téléphone</label>
+              <input class="fr-input" type="tel" id="editor-phone" name="editor-phone" value="0836656565">
+            </div>
+          </div>
+          <div class="fr-col-12 fr-col-md-4">
+            <div class="fr-input-group">
+              <label class="fr-label" for="editor-domain">
+                Nom de domaine
+                <span class="fr-hint-text">exemple.fr</span>
+              </label>
+              <input class="fr-input" type="text" id="editor-domain" name="editor-domain" value="promucad.fr">
+            </div>
+          </div>
+        </div>
+
+        <div class="fr-btns-group fr-btns-group--inline fr-mt-4w">
+          <button class="fr-btn" type="submit">Enregistrer les modifications</button>
+          <button class="fr-btn fr-btn--secondary" type="reset">Annuler</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ====================== SÉCURITÉ ====================== -->
+    <section id="section-securite" class="editor-section" hidden>
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Sécurité</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Liez vos accès à votre infrastructure : filtrage IP et/ou DPoP.
+        </p>
+      </div>
+
+      <ul class="fr-badges-group fr-mb-3w">
+        <li><p class="fr-badge fr-badge--success">Filtrage IP : actif</p></li>
+        <li><p class="fr-badge fr-badge--info">DPoP : mode log</p></li>
+      </ul>
+
+      <div class="fr-alert fr-alert--info fr-mb-4w">
+        <h3 class="fr-alert__title">Modification sur demande</h3>
+        <p>
+          Vos adresses IP et votre clé publique DPoP sont en lecture seule. Pour les
+          modifier, écrivez à l'équipe à
+          <a href="mailto:support@particulier.api.gouv.fr">support@particulier.api.gouv.fr</a>.
+        </p>
+      </div>
+
+      <div class="fr-callout fr-callout--blue-cumulus fr-mb-4w">
+        <h3 class="fr-callout__title fr-h6">Déploiement progressif</h3>
+        <p class="fr-callout__text fr-text--sm">
+          La protection est d'abord activée en mode observation (les appels non conformes
+          sont journalisés sans être bloqués), puis basculée en application après validation
+          avec votre équipe.
+        </p>
+      </div>
+
+      <h2 class="fr-h4">Adresses IP autorisées</h2>
+      <p class="fr-text--sm fr-text-mention--grey">Appels acceptés uniquement depuis ces adresses (lecture seule).</p>
+      <ul class="fr-tags-group fr-mb-4w">
+        <li><p class="fr-tag">185.12.44.10</p></li>
+        <li><p class="fr-tag">185.12.44.11</p></li>
+        <li><p class="fr-tag">51.158.66.0/24</p></li>
+      </ul>
+
+      <h2 class="fr-h4">Clé publique DPoP</h2>
+      <p class="fr-text--sm fr-text-mention--grey">
+        Nous vérifions la signature de chaque appel, sans jamais rien déchiffrer (lecture seule).
+      </p>
+      <div class="fr-input-group">
+        <label class="fr-label" for="editor-jwk">Clé publique (JWK)</label>
+        <textarea class="fr-input" id="editor-jwk" name="editor-jwk" rows="6" readonly>{
+  "kty": "EC",
+  "crv": "P-256",
+  "x": "l8tFrhx-34tV3hRICRDY9zCkDlpBhF42UQUfWVAWBFs",
+  "y": "9VE4jf_Ok_o64zbTTlcuNJajHmt6v9TDVrU0CdvGRDA"
+}</textarea>
+        <p class="fr-hint-text fr-mt-1w">Empreinte (jkt) : <code>nF6rR2x9c1A4kQ8b0sLZpV3wYtH7uD2eK1mJ5oP6qWg</code></p>
+      </div>
+    </section>
+
+    <!-- ====================== HABILITATIONS ====================== -->
+    <section id="section-habilitations" class="editor-section" hidden>
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Habilitations</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Habilitations qui vous sont déléguées. Référencez le <code>delegation_id</code> dans vos appels.
+        </p>
+      </div>
+
+      <div class="fr-table fr-table--bordered fr-table--no-caption">
+        <table>
+          <caption>Habilitations déléguées</caption>
+          <thead>
+            <tr>
+              <th scope="col">DataPass</th>
+              <th scope="col">Intitulé</th>
+              <th scope="col">Collectivité (SIRET)</th>
+              <th scope="col">Délégation</th>
+              <th scope="col">delegation_id</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>48231</td>
+              <td>Restauration scolaire</td>
+              <td>Mairie de Saint-Avé (21560124000018)</td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">Active</p></td>
+              <td><code>6f3c8d9a</code></td>
+            </tr>
+            <tr>
+              <td>51902</td>
+              <td>Crèche municipale</td>
+              <td>CCAS de Niort (26790112700015)</td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">Active</p></td>
+              <td><code>a1b2c3d4</code></td>
+            </tr>
+            <tr>
+              <td>49417</td>
+              <td>Accueil périscolaire</td>
+              <td>Mairie de Lorient (21560121600016)</td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">Active</p></td>
+              <td><code>e5f6a7b8</code></td>
+            </tr>
+            <tr>
+              <td>47119</td>
+              <td>Petite enfance</td>
+              <td>Mairie de Vannes (21560260000011)</td>
+              <td><p class="fr-badge fr-badge--error fr-badge--sm">Révoquée</p></td>
+              <td><code>c9d0e1f2</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ====================== JETONS ÉDITEURS ====================== -->
+    <section id="section-jetons" class="editor-section" hidden>
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Jetons éditeurs</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Un jeton unique, sans droits propres, résolu par SIRET à chaque appel.
+        </p>
+      </div>
+
+      <div class="fr-table fr-table--bordered fr-table--no-caption">
+        <table>
+          <caption>Jetons éditeurs</caption>
+          <thead>
+            <tr>
+              <th scope="col">Identifiant</th>
+              <th scope="col">Créé le</th>
+              <th scope="col">Expiration</th>
+              <th scope="col">Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>3f8a9c21…</code></td>
+              <td>12/03/2026</td>
+              <td>12/03/2027</td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">Actif</p></td>
+            </tr>
+            <tr>
+              <td><code>a91b77e0…</code></td>
+              <td>04/01/2025</td>
+              <td>04/01/2026</td>
+              <td><p class="fr-badge fr-badge--error fr-badge--sm">Expiré</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="fr-btns-group fr-btns-group--inline fr-mt-2w">
+        <button class="fr-btn fr-btn--secondary fr-icon-add-line fr-btn--icon-left" type="button">Générer un nouveau jeton éditeur</button>
+      </div>
+    </section>
+
+    <!-- ====================== LOGS D'ACCÈS ====================== -->
+    <section id="section-logs" class="editor-section" hidden>
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Logs d'accès</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Journal des appels. L'identifiant de l'agent final est stocké haché, jamais en clair.
+        </p>
+      </div>
+
+      <div class="fr-table fr-table--bordered fr-table--no-caption">
+        <table>
+          <caption>Derniers appels</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Endpoint</th>
+              <th scope="col">Destinataire</th>
+              <th scope="col">delegation_id</th>
+              <th scope="col">Agent (haché)</th>
+              <th scope="col">HTTP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10/06/2026 09:42</td>
+              <td><code>/v2/composition_familiale</code></td>
+              <td>21560124000018</td>
+              <td><code>6f3c8d9a</code></td>
+              <td><code>9f86d0…</code></td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">200</p></td>
+            </tr>
+            <tr>
+              <td>10/06/2026 09:41</td>
+              <td><code>/v2/quotient_familial</code></td>
+              <td>26790112700015</td>
+              <td><code>a1b2c3d4</code></td>
+              <td><code>b1c4f7…</code></td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">200</p></td>
+            </tr>
+            <tr>
+              <td>10/06/2026 09:38</td>
+              <td><code>/v2/composition_familiale</code></td>
+              <td>21560260000011</td>
+              <td><code>c9d0e1f2</code></td>
+              <td><code>4a2e9b…</code></td>
+              <td><p class="fr-badge fr-badge--error fr-badge--sm">403</p></td>
+            </tr>
+            <tr>
+              <td>10/06/2026 09:35</td>
+              <td><code>/v2/quotient_familial</code></td>
+              <td>21560121600016</td>
+              <td><code>e5f6a7b8</code></td>
+              <td><code>7d3c1a…</code></td>
+              <td><p class="fr-badge fr-badge--success fr-badge--sm">200</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ====================== MEMBRES ====================== -->
+    <section id="section-membres" class="editor-section" hidden>
+      <div class="fr-mb-2w">
+        <h1 class="fr-mb-1v">Membres</h1>
+        <p class="fr-text--sm fr-mb-0 fr-text-mention--grey">
+          Personnes de votre organisation ayant accès à cet espace.
+        </p>
+      </div>
+
+      <div class="fr-table fr-table--bordered fr-table--no-caption fr-table--layout-fixed">
+        <table>
+          <caption>Membres de l'éditeur</caption>
+          <thead>
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Rôle</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>camille.moreau@promucad.fr</td>
+              <td>Camille Moreau</td>
+              <td>Administrateur</td>
+              <td><button class="fr-btn fr-btn--sm fr-btn--tertiary" type="button">Retirer</button></td>
+            </tr>
+            <tr>
+              <td>amel.benali@promucad.fr</td>
+              <td>Amel Benali</td>
+              <td>Technique</td>
+              <td><button class="fr-btn fr-btn--sm fr-btn--tertiary" type="button">Retirer</button></td>
+            </tr>
+            <tr>
+              <td>yanis.faure@promucad.fr</td>
+              <td>Yanis Faure</td>
+              <td>Technique</td>
+              <td><button class="fr-btn fr-btn--sm fr-btn--tertiary" type="button">Retirer</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form class="fr-mt-2w">
+        <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--bottom">
+          <div class="fr-col-12 fr-col-md-8">
+            <div class="fr-input-group">
+              <label class="fr-label" for="member-email">Ajouter un membre par email</label>
+              <input class="fr-input" type="email" id="member-email" name="member-email" placeholder="utilisateur@promucad.fr">
+            </div>
+          </div>
+          <div class="fr-col-12 fr-col-md-4">
+            <button class="fr-btn fr-btn--secondary" type="submit">Ajouter</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr/dist/dsfr.module.min.js"></script>
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.fr-nav__link[data-section]');
+      var sections = document.querySelectorAll('.editor-section');
+
+      function show(id) {
+        sections.forEach(function (section) {
+          section.hidden = (section.id !== id);
+        });
+        links.forEach(function (link) {
+          if (link.getAttribute('data-section') === id) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+        if (window.scrollTo) { window.scrollTo(0, 0); }
+      }
+
+      function closeMobileMenu() {
+        var modal = document.getElementById('modal-header-menu');
+        try {
+          if (modal && window.dsfr && window.dsfr(modal).modal) {
+            window.dsfr(modal).modal.conceal();
+          }
+        } catch (e) { /* menu non instancié (desktop) : rien à faire */ }
+      }
+
+      links.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          show(link.getAttribute('data-section'));
+          closeMobileMenu();
+        });
+      });
+
+      // Ouverture directe via l'ancre (#section-xxx)
+      if (window.location.hash) {
+        var target = document.querySelector(window.location.hash + '.editor-section');
+        if (target) { show(target.id); }
+      }
+    })();
+  </script>
+</body>
+</html>

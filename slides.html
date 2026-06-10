@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sécuriser & simplifier les accès · API Particulier</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+
+  <style>
+    .reveal { font-size: 32px; }
+    .reveal .slides { text-align: left; }
+    .reveal h1, .reveal h2, .reveal h3 { color: #000091; text-transform: none; letter-spacing: 0; font-weight: 700; }
+    .reveal h1 { font-size: 1.8em; }
+    .reveal h2 { font-size: 1.3em; border-bottom: 3px solid #000091; padding-bottom: .2em; margin-bottom: .6em; }
+    .reveal h3 { font-size: 1.05em; }
+    .reveal strong { color: #000091; }
+    .reveal p, .reveal li { line-height: 1.4; }
+    .reveal li { margin: .3em 0; }
+    .reveal pre { width: 100%; box-shadow: none; margin: .6em 0; font-size: 0.55em; }
+    .reveal pre code { padding: 16px 20px; line-height: 1.45; max-height: 540px; border: 1px solid #ddd; border-left: 4px solid #000091; border-radius: 4px; }
+    .reveal table { font-size: 0.72em; width: 100%; }
+    .reveal th { background: #f0f0ff; color: #000091; }
+    .reveal td, .reveal th { padding: .35em .7em; border: 1px solid #ddd; }
+    .reveal small { color: #666; }
+    .reveal a { color: #000091; }
+    .reveal section.section-divider { text-align: center; }
+    .reveal section.section-divider h2 { color: #fff; border: none; font-size: 2.2em; margin-bottom: .3em; }
+    .reveal section.section-divider p { color: #f5f5fe; font-size: 1.1em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides"></div>
+  </div>
+
+  <script type="module">
+    import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.esm.js';
+    import Markdown from 'https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.esm.js';
+    import Highlight from 'https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.esm.js';
+    import Notes from 'https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.esm.js';
+
+    // On charge slides.md (source unique). On neutralise le front-matter YAML et
+    // le <style> propres à HedgeDoc : le style est porté par ce fichier.
+    const md = (await (await fetch('slides.md')).text())
+      .replace(/^---\n[\s\S]*?\n---\n/, '')
+      .replace(/<style>[\s\S]*?<\/style>\s*/, '');
+
+    const section = document.createElement('section');
+    section.setAttribute('data-markdown', '');
+    section.setAttribute('data-separator', '\\r?\\n---\\r?\\n');
+    section.setAttribute('data-separator-vertical', '\\r?\\n----\\r?\\n');
+    section.setAttribute('data-separator-notes', '^Note:');
+
+    const tpl = document.createElement('script');
+    tpl.setAttribute('type', 'text/template');
+    tpl.textContent = md;
+    section.appendChild(tpl);
+    document.querySelector('.reveal .slides').appendChild(section);
+
+    await Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      transition: 'none',
+      backgroundTransition: 'none',
+      controls: true,
+      progress: true,
+      plugins: [Markdown, Highlight, Notes],
+    });
+  </script>
+</body>
+</html>

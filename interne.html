@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Présentation éditeurs : documents (interne)</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root { --bf: #000091; --bf-dark: #000074; --bf-light: #f5f5fe; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Marianne, Helvetica, Arial, sans-serif; color: #1b1b1b; line-height: 1.5; margin: 0; }
+    header.page { background: var(--bf); color: #fff; padding: 24px 32px; }
+    header.page h1 { margin: 0 0 4px; font-size: 1.6rem; }
+    header.page p { margin: 0; opacity: .85; font-size: .95rem; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px 80px; }
+    nav.toc { background: var(--bf-light); border: 1px solid #cacafb; border-radius: 8px; padding: 16px 20px; margin: 28px 0; }
+    nav.toc h2 { margin: 0 0 8px; font-size: 1rem; color: var(--bf); }
+    nav.toc ul { margin: 0; padding-left: 18px; }
+    nav.toc a { color: var(--bf); text-decoration: none; }
+    nav.toc a:hover { text-decoration: underline; }
+    .doc { margin-top: 44px; }
+    .doc-head { position: sticky; top: 0; background: #fff; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 2px solid var(--bf); z-index: 1; }
+    .doc-head .file { font: .8rem/1 "SFMono-Regular", Menlo, Consolas, monospace; color: #666; }
+    .dl { background: var(--bf); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 4px; font-size: .85rem; white-space: nowrap; }
+    .dl:hover { background: var(--bf-dark); }
+    .doc-body h1 { color: var(--bf-dark); border-bottom: 3px solid var(--bf); padding-bottom: 6px; font-size: 1.5rem; }
+    .doc-body h2 { color: var(--bf); border-bottom: 1px solid #cacafb; padding-bottom: 4px; margin-top: 28px; font-size: 1.2rem; }
+    .doc-body h3 { color: var(--bf-dark); font-size: 1.05rem; }
+    .doc-body table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: .92rem; }
+    .doc-body th { background: var(--bf); color: #fff; text-align: left; padding: 7px 10px; }
+    .doc-body td { border-bottom: 1px solid #e6e6e6; padding: 6px 10px; vertical-align: top; }
+    .doc-body tr:nth-child(even) { background: var(--bf-light); }
+    .doc-body code { background: #eeeefb; padding: 2px 5px; border-radius: 3px; font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: .88em; }
+    .doc-body pre { background: var(--bf-light); border-left: 4px solid var(--bf); border-radius: 4px; padding: 12px 16px; overflow-x: auto; }
+    .doc-body pre code { background: none; padding: 0; font-size: .82rem; line-height: 1.45; }
+    .doc-body blockquote { background: var(--bf-light); border-left: 4px solid var(--bf); margin: 14px 0; padding: 8px 16px; }
+    .doc-body a { color: var(--bf); }
+    .doc-body img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+    .err { color: #c00; }
+  </style>
+</head>
+<body>
+  <header class="page">
+    <h1>Présentation éditeurs : documents de référence</h1>
+    <p>Vue interne : contenu de chaque document + téléchargement du Markdown.</p>
+  </header>
+  <div class="wrap">
+    <nav class="toc"><h2>Sommaire</h2><ul id="toc"></ul></nav>
+    <main id="docs"></main>
+  </div>
+
+  <script>
+    const DOCS = [
+      ['00-contexte-objectifs.md', 'Contexte & objectifs'],
+      ['01a-delegation-intro.md', 'La délégation'],
+      ['01b-jeton-editeur.md', 'Le jeton éditeur'],
+      ['01c-oauth2.md', 'OAuth2 (vision)'],
+      ['02-espace-editeur.md', 'Le nouvel espace éditeur'],
+      ['03-securisation-acces-ip-dpop.md', 'Sécuriser les accès : IP et DPoP'],
+      ['04-tracking-agent-final.md', "Tracking de l'agent final"],
+      ['05-questionnaire-securite-homologation.md', 'Questionnaire de sécurité (homologation)'],
+      ['sondage-feedback.md', 'Sondage de feedback'],
+    ];
+
+    const toc = document.getElementById('toc');
+    const docs = document.getElementById('docs');
+
+    (async () => {
+      for (let i = 0; i < DOCS.length; i++) {
+        const [file, title] = DOCS[i];
+        const id = 'doc-' + i;
+
+        const li = document.createElement('li');
+        li.innerHTML = '<a href="#' + id + '">' + title + '</a>';
+        toc.appendChild(li);
+
+        let bodyHtml;
+        try {
+          const md = await (await fetch(file)).text();
+          bodyHtml = marked.parse(md);
+        } catch (e) {
+          bodyHtml = '<p class="err">Impossible de charger ' + file +
+            ' (servez la page en HTTP, pas en file://).</p>';
+        }
+
+        const section = document.createElement('section');
+        section.className = 'doc';
+        section.id = id;
+        section.innerHTML =
+          '<div class="doc-head"><span class="file">' + file + '</span>' +
+          '<a class="dl" href="' + file + '" download>Télécharger le .md</a></div>' +
+          '<div class="doc-body">' + bodyHtml + '</div>';
+        docs.appendChild(section);
+      }
+    })();
+  </script>
+</body>
+</html>
