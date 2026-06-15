@@ -448,6 +448,55 @@ volontariat pour un pilote en mode log.
 
 ---
 
+## Attestations PDF vérifiables
+
+Un appel API pourra produire une **attestation officielle** que
+n'importe quel agent pourra contrôler — sans logiciel, juste un navigateur.
+
+En cours de développement sur plusieurs endpoints (ex. quotient familial).
+
+Cas d'usage type :
+
+1. L'agent récupère le QF → obtient en même temps le PDF mis en forme
+2. Il joint le PDF au dossier (ou archive simplement le lien de vérification)
+3. Un autre agent contrôle l'authenticité : QR code ou lien → page de
+   vérification → compare le code affiché au code imprimé sur le PDF
+
+Deux niveaux de preuve selon le besoin :
+
+- **`proof-only`** : lien + code de vérification, valable **~5 ans** — suffit
+  pour archiver, sans jamais télécharger de PDF
+- **`pdf`** : idem + lien de téléchargement du document mis en forme
+
+Note: Le lien de vérification est à lui seul le justificatif durable.
+Le PDF n'est utile que si on veut le joindre ou l'imprimer.
+
+---
+
+## Attestations PDF : comment ça marche
+
+Un en-tête suffit pour obtenir une **preuve officielle et contrôlable** :
+
+```http
+GET /v3/dss/quotient_familial/identite
+X-Generate-Proof: pdf          # ou proof-only (lien sans PDF)
+Authorization: Bearer <jeton>
+```
+
+La réponse (bloc `data` inchangé) ajoute :
+
+- `links.attestation_pdf` → lien de téléchargement du PDF (expire en ~5 min)
+- `meta.pdf_verification_link` + `meta.pdf_verification_code` → preuve
+  contrôlable sur `particulier.api.gouv.fr` pendant **~5 ans**, sans logiciel
+
+Le PDF embarque un **QR code** et le code de vérification ; la page de
+contrôle n'expose qu'un sous-ensemble (pas d'identité complète).
+
+Note: proof-only = archiver le lien + code sans jamais télécharger le PDF.
+Le lien de vérification est à lui seul le justificatif durable.
+
+---
+
 ## Merci
 
 Échanges, questions, et **retours via le sondage**.
