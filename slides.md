@@ -53,10 +53,11 @@ notamment IP vs DPoP. On termine par un sondage.
 4. Sécurisation des accès : IP / DPoP
 5. Tracking de l'agent final
 6. Questionnaire de sécurité (homologation)
+7. Attestations PDF vérifiables
 
 **→ puis un sondage pour recueillir votre avis**
 
-Note: 6 sujets, 2 fils rouges : sécuriser ET simplifier. Tout est opt-in et
+Note: 7 sujets, 2 fils rouges : sécuriser ET simplifier. Tout est opt-in et
 progressif. Comptez ~30 min, puis échanges.
 
 ---
@@ -449,11 +450,18 @@ volontariat pour un pilote en mode log.
 ---
 
 ## Attestations PDF vérifiables
+<!-- .slide: class="section-divider" data-background-color="#000091" -->
 
-Un appel API pourra produire une **attestation officielle** que
-n'importe quel agent pourra contrôler — sans logiciel, juste un navigateur.
+Prouver l'authenticité d'une donnée, sans logiciel.
 
-En cours de développement sur plusieurs endpoints (ex. quotient familial).
+Note: En cours de développement sur plusieurs endpoints (ex. quotient familial).
+
+---
+
+## Attestations PDF : le cas d'usage
+
+Un appel API pourra produire une **attestation officielle** contrôlable
+par n'importe quel agent — sans logiciel, juste un navigateur.
 
 Cas d'usage type :
 
@@ -462,10 +470,9 @@ Cas d'usage type :
 3. Un autre agent contrôle l'authenticité : QR code ou lien → page de
    vérification → compare le code affiché au code imprimé sur le PDF
 
-Deux niveaux de preuve selon le besoin :
+Deux niveaux de preuve :
 
-- **`proof-only`** : lien + code de vérification, valable **~5 ans** — suffit
-  pour archiver, sans jamais télécharger de PDF
+- **`proof-only`** : lien + code de vérification, valable **~5 ans**
 - **`pdf`** : idem + lien de téléchargement du document mis en forme
 
 Note: Le lien de vérification est à lui seul le justificatif durable.
