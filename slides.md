@@ -41,7 +41,7 @@ slideOptions:
 <small>Délégation · Espace éditeur · Sécurisation · Traçabilité</small>
 
 Note: Objectif du jour : partager la trajectoire et recueillir votre avis,
-notamment IP vs DPoP. On termine par un sondage.
+notamment IP vs DPoP. Un sondage vous sera envoyé après la présentation.
 
 ---
 
@@ -55,7 +55,7 @@ notamment IP vs DPoP. On termine par un sondage.
 6. Nouvel espace éditeur
 7. Attestations PDF vérifiables
 
-**→ puis un sondage pour recueillir votre avis**
+**→ puis échanges — un sondage vous sera envoyé après**
 
 Note: 7 sujets, 2 fils rouges : sécuriser ET simplifier. Tout est opt-in et
 progressif. Comptez ~30 min, puis échanges.
@@ -228,7 +228,7 @@ depuis le logiciel. Court (~1 min).
 
 Qu'un jeton fuité soit inutilisable ailleurs.
 
-Note: Le sujet sur lequel on veut vraiment votre avis (IP vs DPoP). Objectif :
+Note: Le sujet sur lequel on veut vraiment votre retour (IP vs DPoP). Objectif :
 lier le jeton à son appelant légitime.
 
 ---
@@ -302,7 +302,7 @@ Déploiement **log → enforcement**, accompagné puis self-service.
 <small>Détails (PDF) : [03-securisation-acces-ip-dpop.pdf](03-securisation-acces-ip-dpop.pdf)</small>
 
 Note: Complémentaires (ceinture + bretelles). Le choix dépend de votre infra :
-c'est précisément la question du sondage.
+c'est précisément la question qu'on posera dans le sondage à venir.
 
 ---
 
@@ -384,7 +384,7 @@ réimplémenter, jeton éditeur inclus et bientôt DPoP.
 
 ## On veut votre avis
 
-Un **sondage** à l'issue de la présentation :
+Un **sondage vous sera envoyé** après la présentation :
 
 - **IP vs DPoP vs les deux** : préférence & faisabilité
 - Intérêt **jeton éditeur** / **OAuth2**
@@ -510,7 +510,7 @@ Le lien de vérification est à lui seul le justificatif durable.
 
 ## Merci
 
-Échanges, questions, et **retours via le sondage**.
+Échanges et questions — **le sondage arrive par email**.
 
 On revient vers chacun pour le **suivi individuel**.
 
