@@ -49,10 +49,10 @@ notamment IP vs DPoP. On termine par un sondage.
 
 1. Contexte & objectifs
 2. Délégation : jeton éditeur & OAuth2
-3. Nouvel espace éditeur
-4. Sécurisation des accès : IP / DPoP
-5. Tracking de l'agent final
-6. Questionnaire de sécurité (homologation)
+3. Sécurisation des accès : IP / DPoP
+4. Tracking de l'agent final
+5. Questionnaire de sécurité (homologation)
+6. Nouvel espace éditeur
 7. Attestations PDF vérifiables
 
 **→ puis un sondage pour recueillir votre avis**
@@ -220,59 +220,6 @@ votre intérêt.
 
 Note: Lancer le Loom. Montre la création d'une délégation en quelques clics
 depuis le logiciel. Court (~1 min).
-
----
-
-## Espace éditeur
-<!-- .slide: class="section-divider" data-background-color="#000091" -->
-
-Le cockpit où vous pilotez tout.
-
-Note: La rubrique qui matérialise tous les autres chantiers : délégations,
-sécurité, jetons, logs, membres.
-
----
-
-## Espace éditeur : le cockpit
-
-D'un simple listing à un **cockpit complet** :
-
-| Profil | Sécurité (IP / DPoP) | Habilitations |
-|:------:|:--------------------:|:-------------:|
-| **Jetons éditeurs** | **Logs d'accès** | **Membres** |
-
-C'est ici qu'on **pilote tous les autres chantiers**.
-
-Note: On passe d'un simple listing à 6 rubriques. Insister : c'est le liant de
-toute la présentation.
-
----
-
-## Espace éditeur : aperçu
-
-<img src="espace-editeur.png" alt="Espace éditeur" style="max-height: 540px; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15);">
-
-<small>Démo interactive : [mockup-espace-editeur.html](mockup-espace-editeur.html)</small>
-
-Note: C'est une maquette (données fictives Promucad), pas encore le produit
-final. Ouvrir le lien interactif si le temps le permet.
-
----
-
-## Espace éditeur : ouverture progressive
-
-```text
-Étape 1 : ACCOMPAGNÉ   →   Étape 2 : SELF-SERVICE
-opérations sensibles       configuration en autonomie
-via l'équipe               (IP, clé DPoP, délégations)
-```
-
-On enrichit l'espace **au fil des chantiers**, pas tout d'un coup.
-
-<small>Détails (PDF) : [02-espace-editeur.pdf](02-espace-editeur.pdf)</small>
-
-Note: Au début, les opérations sensibles (IP, clé DPoP) passent par l'équipe.
-On ouvre le self-service progressivement.
 
 ---
 
@@ -446,6 +393,59 @@ Un **sondage** à l'issue de la présentation :
 
 Note: Le sondage oriente nos priorités. Insister sur IP vs DPoP et le
 volontariat pour un pilote en mode log.
+
+---
+
+## Espace éditeur
+<!-- .slide: class="section-divider" data-background-color="#000091" -->
+
+Le cockpit où vous pilotez tout.
+
+Note: La rubrique qui matérialise tous les autres chantiers : délégations,
+sécurité, jetons, logs, membres.
+
+---
+
+## Espace éditeur : le cockpit
+
+D'un simple listing à un **cockpit complet** :
+
+| Profil | Sécurité (IP / DPoP) | Habilitations |
+|:------:|:--------------------:|:-------------:|
+| **Jetons éditeurs** | **Logs d'accès** | **Membres** |
+
+C'est ici qu'on **pilote tous les autres chantiers**.
+
+Note: On passe d'un simple listing à 6 rubriques. Insister : c'est le liant de
+toute la présentation.
+
+---
+
+## Espace éditeur : aperçu
+
+<img src="espace-editeur.png" alt="Espace éditeur" style="max-height: 540px; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15);">
+
+<small>Démo interactive : [mockup-espace-editeur.html](mockup-espace-editeur.html)</small>
+
+Note: C'est une maquette (données fictives Promucad), pas encore le produit
+final. Ouvrir le lien interactif si le temps le permet.
+
+---
+
+## Espace éditeur : ouverture progressive
+
+```text
+Étape 1 : ACCOMPAGNÉ   →   Étape 2 : SELF-SERVICE
+opérations sensibles       configuration en autonomie
+via l'équipe               (IP, clé DPoP, délégations)
+```
+
+On enrichit l'espace **au fil des chantiers**, pas tout d'un coup.
+
+<small>Détails (PDF) : [02-espace-editeur.pdf](02-espace-editeur.pdf)</small>
+
+Note: Au début, les opérations sensibles (IP, clé DPoP) passent par l'équipe.
+On ouvre le self-service progressivement.
 
 ---
 
