@@ -25,6 +25,7 @@ DOCS=(
   03-securisation-acces-ip-dpop
   04-tracking-agent-final
   05-questionnaire-securite-homologation
+  06-attestations-pdf
 )
 
 # --- 1. PDF -----------------------------------------------------------------

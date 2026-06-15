@@ -475,6 +475,8 @@ Deux niveaux de preuve :
 - **`proof-only`** : lien + code de vérification, valable **~5 ans**
 - **`pdf`** : idem + lien de téléchargement du document mis en forme
 
+<small>Détails (PDF) : [06-attestations-pdf.pdf](06-attestations-pdf.pdf)</small>
+
 Note: Le lien de vérification est à lui seul le justificatif durable.
 Le PDF n'est utile que si on veut le joindre ou l'imprimer.
 
@@ -498,6 +500,8 @@ La réponse (bloc `data` inchangé) ajoute :
 
 Le PDF embarque un **QR code** et le code de vérification ; la page de
 contrôle n'expose qu'un sous-ensemble (pas d'identité complète).
+
+<small>Détails (PDF) : [06-attestations-pdf.pdf](06-attestations-pdf.pdf)</small>
 
 Note: proof-only = archiver le lien + code sans jamais télécharger le PDF.
 Le lien de vérification est à lui seul le justificatif durable.
